@@ -1,0 +1,6 @@
+name: statustool
+recipe: symfony
+config:
+  webroot: ./public
+  php: '8.1'
+  cache: redis
