@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BoardSettings index{% endblock %}
+
+{% block body %}
+    <h1>BoardSettings index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Display_status_title</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for board_setting in board_settings %}
+            <tr>
+                <td>{{ board_setting.id }}</td>
+                <td>{{ board_setting.displayStatusTitle ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_board_settings_show', {'id': board_setting.id}) }}">show</a>
+                    <a href="{{ path('app_board_settings_edit', {'id': board_setting.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_board_settings_new') }}">Create new</a>
+{% endblock %}
